@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="estilos.css">
+
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TEJIDOS F.L.A.</title>
+</head>
+
+<body>
+    <header>
+        <img class="logo" src="./logo fla.png" alt="">
+        <h1 class="titulo">TEJIDOS F.L.A</h1>
+
+        <button class="botoningreso">
+            Ingresar
+        </button>
+    </header>
+
+    <nav>
+        <ul>
+            <li onclick="mostrarHome()"><a href="#" >Home</a></li>
+            <li onclick="mostrarGorros()"><a href="#">Gorros</a></li>
+            <li onclick="mostrarBufandas()"><a href="#">Bufandas</a></li>
+            <li onclick="mostrarCuellos()"><a href="#">Cuellos</a></li>
+            <li onclick="mostrarBolsos()"><a href="#"Bolsos></a></li>></li>
+            <li onclick="mostrarFormulario()"><a href="#">Haz tú pedido</a></li>
+        </ul>
+    </nav>
+    <div id="home">
+        <div id="contenedor-home">
+            <aside>
+                <h2>Nuestra Historia</h2>
+                <p>Surge como una iniciativa de comercialización de productos artesanales elaborados a mano, con el
+                    ánimo de brindar al cliente, una nueva imagen que represente su autenticidad.</p>
+            </aside>
+            <section>
+                <img id="foto" src="Foto doña evangelina-1.png" alt="">
+
+            </section>
+        </div>
+    </div>
+    <div id="contenedor-gorros">
+        <div id="lista-gorros">
+            <img src="./Productos/Gorro 2 18.png" alt="">
+            <img src="./Productos/Gorro 3 18.png" alt="">
+            <img src="./Productos/Gorro 4 18.png" alt="">
+            <img src="./Productos/Gorro 5 18.png" alt="">
+            <img src="./Productos/Gorro 8 18.png" alt="">
+            <img src="./Productos/Gorro 9 18.png" alt="">
+        </div>
+        <p>Gorros</p>
+    </div>
+    <div id="contenedor-bufandas">
+        <div id="lista-bufandas">
+            <img src="./Productos/Bufanda 2 30.png" alt="">
+            <img src="./Productos/bufanda 3 30.png" alt="">
+            <img src="./Productos/Bufanda 4 30.png" alt="">
+            <img src="./Productos/Bufanda 5.png" alt="">
+            <img src="./Productos/Bufanda 6.png" alt="">
+            <img src="./Productos/Bufanda 30.png" alt="">
+            <img src="./Productos/Bufanda 35.png" alt="">
+        </div>
+        <p>Bufand</p>
+    </div>
+    <div id="contenedor-cuellos">
+        <div id="lista-cuellos">
+            <img src="Productos/Cuello 45 (2).png" alt="">
+            <img src="Productos/Cuello 45.png" alt="">
+            <img src="Productos/Cuello capa 55.png" alt="">
+            <img src="Productos/Cuello Triangular 2 55.png" alt="">
+            <img src="Productos/Cuello triangular 55.png" alt="">
+        </div>
+        <p>Cuellos</p>
+    </div>
+
+    <div id="contenedor-bolsos">
+        <div id="lista-bolsos">
+            <img src="Productos/Bolso 2 30.png" alt="">
+            <img src="Productos/Bolso 3 25.png" alt="">
+            <img src="Productos/Bolso 4 45.png" alt="">
+            <img src="Productos/Bolso 5 25.png" alt="">
+        </div>
+        <p>Bolsos</p>
+    </div>
+    <div id="formulario">
+        <p>Formulario</p>
+    </div>
+
+    <footer>
+        <h3>Contactanos: +57 1234567890</h3>
+    </footer>
+    <script>
+        var gorros = document.getElementById("contenedor-gorros");
+        var home = document.getElementById("home");
+        var bufandas = document.getElementById("contenedor-bufandas");
+        var cuellos = document.getElementById("contenedor-cuellos");
+        var bolsos = document.getElementById("contenedor-bolsos");
+        var formulario = document.getElementById("formulario");
+        function mostrarGorros() {
+            gorros.style.display = "block"
+            home.style.display = "none"
+            bufandas.style.display = "none"
+            cuellos.style.display= "none"
+            bolsos.style.display= "none"
+            formulario.style.display = "none"
+        }
+        function mostrarHome() {
+            home.style.display = "block"
+            gorros.style.display = "none"
+            bufandas.style.display = "none"
+            cuellos.style.display= "none"
+            bolsos.style.display= "none"
+            formulario.style.display = "none"
+        }
+        function mostrarBufandas() {
+            bufandas.style.display = "block"
+            gorros.style.display = "none"
+            home.style.display = "none"
+            cuellos.style.display = "none"
+            bolsos.style.display= "none"
+            formulario.style.display = "none"
+        }
+        function mostrarCuellos() {
+            cuellos.style.display = "block"
+            bufandas.style.display = "none"
+            gorros.style.display = "none"
+            home.style.display = "none"
+            bolsos.style.display= "none"
+            formulario.style.display = "none"
+        }
+        function mostrarBolsos() {
+            bolsos.style.display= "block"
+            formulario.style.display = "none"
+            gorros.style.display = "none"
+            home.style.display = "none"
+            bufandas.style.display = "none"            
+            cuellos.style.display= "none"
+        }
+        function mostrarFormulario() {
+            formulario.style.display = "block"
+            gorros.style.display = "none"
+            home.style.display = "none"
+            bufandas.style.display = "none"
+            bolsos.style.display= "none"
+            cuellos.style.display= "none"
+        }
+    </script>
+
+</body>
+
+</html>
