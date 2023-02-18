@@ -67,6 +67,27 @@
     opacity: 1;
     filter:contrast(120%)
   }  
+  #contenedor-bolsos{
+    display: none;
+  }
+  #lista-bolsos{
+    display: flex;
+    width: 1000px;
+    height: 500px;
+  }
+  #lista-bolsos img{
+    width: 0;
+    flex-grow: 1;
+    object-fit: cover;
+    opacity: 8;
+    transition: 2s;
+  }
+  #lista-bolsos img:hover{
+    cursor: crosshair;
+    width: 300px;
+    opacity: 1;
+    filter:contrast(120%)
+  }  
   #formulario{
       display: none;
   }
