@@ -1,0 +1,4 @@
+https://www.w3schools.com/
+https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Container_Queries
+
+https://www.youtube.com/shorts/8Rc18lfl68c
