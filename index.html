@@ -9,7 +9,7 @@
     <title>TEJIDOS F.L.A.</title>
 </head>
 
-<body>
+<body id="body">
     <header>
         <img class="logo" src="./logo fla.png" alt="">
         <h1 class="titulo">TEJIDOS F.L.A</h1>
@@ -17,15 +17,19 @@
         <button class="botoningreso">
             Ingresar
         </button>
+        <button class="botonregistro" onclick="mostrarRegistro()">
+            Registro
+        </button>
     </header>
 
     <nav>
         <ul>
-            <li onclick="mostrarHome()"><a href="#" >Home</a></li>
+            <li onclick="mostrarHome()"><a href="#">Home</a></li>
             <li onclick="mostrarGorros()"><a href="#">Gorros</a></li>
             <li onclick="mostrarBufandas()"><a href="#">Bufandas</a></li>
             <li onclick="mostrarCuellos()"><a href="#">Cuellos</a></li>
-            <li onclick="mostrarBolsos()"><a href="#">Bolsos</a></li></li>
+            <li onclick="mostrarBolsos()"><a href="#">Bolsos</a></li>
+            </li>
             <li onclick="mostrarFormulario()"><a href="#">Haz tú pedido</a></li>
         </ul>
     </nav>
@@ -43,6 +47,7 @@
         </div>
     </div>
     <div id="contenedor-gorros">
+        
         <div id="lista-gorros">
             <img src="./Productos/Gorro 2 18.png" alt="">
             <img src="./Productos/Gorro 3 18.png" alt="">
@@ -51,7 +56,7 @@
             <img src="./Productos/Gorro 8 18.png" alt="">
             <img src="./Productos/Gorro 9 18.png" alt="">
         </div>
-        <p>Gorros</p>
+
     </div>
     <div id="contenedor-bufandas">
         <div id="lista-bufandas">
@@ -63,7 +68,7 @@
             <img src="./Productos/Bufanda 30.png" alt="">
             <img src="./Productos/Bufanda 35.png" alt="">
         </div>
-        <p>Bufandas</p>
+
     </div>
     <div id="contenedor-cuellos">
         <div id="lista-cuellos">
@@ -73,7 +78,7 @@
             <img src="Productos/Cuello Triangular 2 55.png" alt="">
             <img src="Productos/Cuello triangular 55.png" alt="">
         </div>
-        <p>Cuellos</p>
+
     </div>
 
     <div id="contenedor-bolsos">
@@ -90,14 +95,71 @@
             <img src="Productos/Bolso 12 50.png" alt="">
             <img src="Productos/Bolso 30.png" alt="">
         </div>
-        <p>Bolsos</p>
+
     </div>
-    <div id="formulario">
+    <div id="formulario-pedido">
         <p>Formulario</p>
+    </div>
+    <div id="formulario-registro">
+        <form id="form-registro">
+            <label for="nombres">
+                Nombres:
+            </label>
+            <input type="text" name="Nombre" id="nombre" placeholder="Nombres" required>
+            <label for="apellidos">
+                Apellidos:
+            </label>
+            <input type="text" name="Apellido" id="apellidos" placeholder="Apellidos">
+            <label for="correo">
+                Correo
+            </label>
+            <input type="email" name="Correo" id="correo" placeholder="Correo">
+            <label for="Telefono">
+                Teléfono
+            </label>
+            <input type="tel" name="Telefono" id="telefono" placeholder="Teléfono">
+            <label for="fechan">
+                Fecha de nacimiento
+            </label>
+            <input type="date" name="Fecha" id="fechan" placeholder="Fecha de nacimiento">
+
+            <button value="Enviar" onclick="registro()">Enviar</buttom>
+
+        </form>
+
+    </div>
+    <div id="formulario-calificanos">
+        <form id="form-calificanos">
+            <label for="pregunta1">
+                ¿Qué te parecen nuestros productos?
+            </label>
+            <textarea name="pregunta1" id="pregunta1"></textarea>
+            <label for="pregunta2">
+                ¿Recomendarías nuestros productos?
+            </label>
+            <label for="radiosi"> Si
+                <input type="radio" value="Si" name="radio" id="radiosi"></label>
+            <label for="radiono"> No
+                <input type="radio" value="No" name="radio" id="radiono"></label>
+
+            <label for="pregunta3">
+
+                ¿Qué otros productos te gustaría ver?
+            </label>
+            <textarea name="pregunta3" id="pregunta3"></textarea>
+
+
+            <button value="Enviar" onclick="calificanos()">Enviar</buttom>
+
+        </form>
+
     </div>
 
     <footer>
         <h3>Contactanos: +57 1234567890</h3>
+        <a id="calificanos" href="#" onclick="mostrarFormularioCalificanos()">
+            Calificanos
+        </a>
     </footer>
     <script>
         var gorros = document.getElementById("contenedor-gorros");
@@ -105,54 +167,119 @@
         var bufandas = document.getElementById("contenedor-bufandas");
         var cuellos = document.getElementById("contenedor-cuellos");
         var bolsos = document.getElementById("contenedor-bolsos");
-        var formulario = document.getElementById("formulario");
-        function mostrarGorros() {
-            gorros.style.display = "block"
+        var formulario_pedido = document.getElementById("formulario-pedido");
+        var formulario_registro = document.getElementById("formulario-registro");
+        var body = document.getElementById("body");
+        var registro_exitoso = document.getElementById("registro-exitoso");
+        var form_reg = document.getElementById("form-registro")
+        var formCalificanos = document.getElementById("formulario-calificanos")
+
+        function registro() {
+
+            var nombre = document.getElementById("nombre").value
+            var apellido = document.getElementById("apellidos").value
+            var correo = document.getElementById("correo").value
+            var telefono = document.getElementById("telefono").value
+            var fecha = document.getElementById("fechan").value
+            console.log(nombre, apellido, correo, telefono, fecha)
+            var today = new Date()
+            var fechaRegistro = today.toLocaleDateString()
+            window.alert("Registro Exitoso \n Nombres: " + nombre + "\n Apellidos: " + apellido + "\n Correo: " + correo + "\n Teléfono: " + telefono + "\n Fecha de Nacimiento: " + fecha + "\n Fecha de Registro: " + fechaRegistro)
+        }
+
+
+
+        function mostrarRegistro() {
+            formulario_registro.style.display = "flex"
+            gorros.style.display = "none"
             home.style.display = "none"
             bufandas.style.display = "none"
-            cuellos.style.display= "none"
-            bolsos.style.display= "none"
-            formulario.style.display = "none"
+            cuellos.style.display = "none"
+            bolsos.style.display = "none"
+            formulario_pedido.style.display = "none"
+            formCalificanos.style.display = "none"
+        }
+
+        function mostrarGorros() {
+            gorros.style.display = "flex"
+            home.style.display = "none"
+            bufandas.style.display = "none"
+            cuellos.style.display = "none"
+            bolsos.style.display = "none"
+            formulario_pedido.style.display = "none"
+            formCalificanos.style.display = "none"
+            formulario_registro.style.display = "none"
+
         }
         function mostrarHome() {
-            home.style.display = "block"
+            home.style.display = "flex"
             gorros.style.display = "none"
             bufandas.style.display = "none"
-            cuellos.style.display= "none"
-            bolsos.style.display= "none"
-            formulario.style.display = "none"
+            cuellos.style.display = "none"
+            bolsos.style.display = "none"
+            formulario_pedido.style.display = "none"
+            formCalificanos.style.display = "none"
+            formulario_registro.style.display = "none"
+
         }
         function mostrarBufandas() {
-            bufandas.style.display = "block"
+            bufandas.style.display = "flex"
             gorros.style.display = "none"
             home.style.display = "none"
             cuellos.style.display = "none"
-            bolsos.style.display= "none"
-            formulario.style.display = "none"
+            bolsos.style.display = "none"
+            formulario_pedido.style.display = "none"
+            formCalificanos.style.display = "none"
+            formulario_registro.style.display = "none"
+
         }
         function mostrarCuellos() {
-            cuellos.style.display = "block"
+            cuellos.style.display = "flex"
             bufandas.style.display = "none"
             gorros.style.display = "none"
             home.style.display = "none"
-            bolsos.style.display= "none"
-            formulario.style.display = "none"
+            bolsos.style.display = "none"
+            formulario_pedido.style.display = "none"
+            formCalificanos.style.display = "none"
+            formulario_registro.style.display = "none"
+
         }
         function mostrarBolsos() {
-            bolsos.style.display= "block"
-            formulario.style.display = "none"
-            gorros.style.display = "none"
-            home.style.display = "none"
-            bufandas.style.display = "none"            
-            cuellos.style.display= "none"
-        }
-        function mostrarFormulario() {
-            formulario.style.display = "block"
+            bolsos.style.display = "flex"
+            formulario_pedido.style.display = "none"
             gorros.style.display = "none"
             home.style.display = "none"
             bufandas.style.display = "none"
-            bolsos.style.display= "none"
-            cuellos.style.display= "none"
+            cuellos.style.display = "none"
+            formCalificanos.style.display = "none"
+            formulario_registro.style.display = "none"
+
+        }
+        function mostrarFormulario() {
+            formulario_pedido.style.display = "flex"
+            gorros.style.display = "none"
+            home.style.display = "none"
+            bufandas.style.display = "none"
+            bolsos.style.display = "none"
+            cuellos.style.display = "none"
+            formCalificanos.style.display = "none"
+            formulario_registro.style.display = "none"
+
+        }
+
+        function calificanos() {
+            window.alert("¡Gracias!\nTu opinión es muy importante para nosotros")
+        }
+        function mostrarFormularioCalificanos() {
+            formCalificanos.style.display = "flex"
+            formulario_pedido.style.display = "none"
+            gorros.style.display = "none"
+            home.style.display = "none"
+            bufandas.style.display = "none"
+            bolsos.style.display = "none"
+            cuellos.style.display = "none"
+            formulario_registro.style.display = "none"
+
         }
     </script>
 
