@@ -48,7 +48,15 @@
   align-items: center;
   display: none;
 }
+.icono{
+margin-left: 20px;
+  height: 40px;
+  cursor: pointer;
 
+}
+.contenedor-iconos{
+  display:flex;
+}
 #lista-bufandas {  
   display: flex;
   width: 2000px;
@@ -245,7 +253,7 @@ footer {
   display: flex;
   justify-content: center;
   background-color: #a2409f;
-  height: 90px;
+  height: 130px;
   border-bottom-left-radius: 25px;
   color: #e6e6fa;
   border-bottom-right-radius: 25px;
@@ -298,6 +306,7 @@ input {
 #calificanos {
 
   color: azure;
+  margin-bottom: 10px;
 
 }
 

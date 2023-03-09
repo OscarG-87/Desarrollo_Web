@@ -115,19 +115,20 @@
             <label for="apellidos">
                 Apellidos:
             </label>
-            <input type="text" name="Apellido" id="apellidos" placeholder="Apellidos">
+            <input type="text" name="Apellido" id="apellidos" placeholder="Apellidos" required>
             <label for="correo">
                 Correo
             </label>
-            <input type="email" name="Correo" id="correo" placeholder="Correo">
+            <input type="email" name="Correo" id="correo" placeholder="Correo" required>
+            <h2 id="result"></h2>
             <label for="Telefono">
                 Teléfono
             </label>
-            <input type="tel" name="Telefono" id="telefono" placeholder="Teléfono">
+            <input type="tel" name="Telefono" id="telefono" placeholder="Teléfono" required>
             <label for="fechan">
                 Fecha de nacimiento
             </label>
-            <input type="date" name="Fecha" id="fechan" placeholder="Fecha de nacimiento">
+            <input type="date" name="Fecha" id="fechan" placeholder="Fecha de nacimiento" required>
 
             <button value="Enviar" onclick="registro()">Enviar</buttom>
 
@@ -160,12 +161,19 @@
         </form>
 
     </div>
-
+    <div id="modal-confirmacion"></div>
+    
     <footer>
-        <h3>Contactanos: +57 1234567890</h3>
-        <a id="calificanos" href="#" onclick="mostrarFormularioCalificanos()">
-            Calificanos
-        </a>
+        <h3>Contactanos:</h3>
+   
+        <div class="contendor-iconos">
+      <a href="https://api.whatsapp.com/send?phone=573123131569" target="_blank" ><img  class="icono" src="./iconos/whatsapp.png" alt="" onclick="" /></a>
+      <a href="https://instagram.com/tejidos_fla?igshid=YmMyMTA2M2Y=" target="_blank" ><img  class="icono" src="./iconos/instagram.png" alt="" /></a>
+      <a href="https://www.facebook.com/EvaGalvis12" target="_blank" ><img  class="icono" src="./iconos/facebook.png" alt="" /></a>
+    </div>
+    <a id="calificanos" href="#" onclick="mostrarFormularioCalificanos()">
+        Calificanos
+    </a>
     </footer>
     <script>
         var gorros = document.getElementById("contenedor-gorros");
@@ -180,6 +188,9 @@
         var form_reg = document.getElementById("form-registro")
         var formCalificanos = document.getElementById("formulario-calificanos")
         var nav = document.getElementById("nav");
+        var modal_confirmacion = document.getElementById("modal-confirmacion");
+    
+
         function registro() {
 
             var nombre = document.getElementById("nombre").value
@@ -187,11 +198,15 @@
             var correo = document.getElementById("correo").value
             var telefono = document.getElementById("telefono").value
             var fecha = document.getElementById("fechan").value
-            console.log(nombre, apellido, correo, telefono, fecha)
             var today = new Date()
             var fechaRegistro = today.toLocaleDateString()
-            window.alert("Registro Exitoso \n Nombres: " + nombre + "\n Apellidos: " + apellido + "\n Correo: " + correo + "\n Teléfono: " + telefono + "\n Fecha de Nacimiento: " + fecha + "\n Fecha de Registro: " + fechaRegistro)
+    
+            if(nombre.length>0 && apellido.length>0   && telefono.length>0 && fecha.length>0 && correo.includes('@')){
+          
+                window.alert("Registro Exitoso \n Nombres: " + nombre + "\n Apellidos: " + apellido + "\n Correo: " + correo + "\n Teléfono: " + telefono + "\n Fecha de Nacimiento: " + fecha + "\n Fecha de Registro: " + fechaRegistro)
+            }
         }
+
 
 
 
