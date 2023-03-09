@@ -11,18 +11,22 @@
 
 <body id="body">
     <header>
-        <img class="logo" src="./logo fla.png" alt="">
+        <img class="logo" src="./imagenes/logo fla.png" alt="">
         <h1 class="titulo">TEJIDOS F.L.A</h1>
 
-        <button class="botoningreso">
-            Ingresar
-        </button>
-        <button class="botonregistro" onclick="mostrarRegistro()">
-            Registro
-        </button>
+        <div id ="contenedor-botones">
+            <button class="botoningreso">
+                Ingreso
+            </button>
+            <button class="botonregistro" onclick="mostrarRegistro()">
+                Registro
+            </button>
+        </div>
+
+        
     </header>
 
-    <nav>
+    <nav id="nav">
         <ul>
             <li onclick="mostrarHome()"><a href="#">Home</a></li>
             <li onclick="mostrarGorros()"><a href="#">Gorros</a></li>
@@ -39,13 +43,15 @@
                 <h2>Nuestra Historia</h2>
                 <p>Surge como una iniciativa de comercialización de productos artesanales elaborados a mano, con el
                     ánimo de brindar al cliente, una nueva imagen que represente su autenticidad.</p>
+                    
             </aside>
             <section>
-                <img id="foto" src="Foto.png" alt="">
+                <img id="foto" src="./imagenes/Foto.png" alt="">
 
             </section>
         </div>
     </div>
+    
     <div id="contenedor-gorros">
         
         <div id="lista-gorros">
@@ -173,7 +179,7 @@
         var registro_exitoso = document.getElementById("registro-exitoso");
         var form_reg = document.getElementById("form-registro")
         var formCalificanos = document.getElementById("formulario-calificanos")
-
+        var nav = document.getElementById("nav");
         function registro() {
 
             var nombre = document.getElementById("nombre").value
@@ -198,6 +204,7 @@
             bolsos.style.display = "none"
             formulario_pedido.style.display = "none"
             formCalificanos.style.display = "none"
+            
         }
 
         function mostrarGorros() {
@@ -209,6 +216,7 @@
             formulario_pedido.style.display = "none"
             formCalificanos.style.display = "none"
             formulario_registro.style.display = "none"
+            nav.style.backgroundColor = "transparent"
 
         }
         function mostrarHome() {
@@ -220,6 +228,7 @@
             formulario_pedido.style.display = "none"
             formCalificanos.style.display = "none"
             formulario_registro.style.display = "none"
+            nav.style.backgroundColor ="#e6e6fa"
 
         }
         function mostrarBufandas() {
@@ -231,6 +240,7 @@
             formulario_pedido.style.display = "none"
             formCalificanos.style.display = "none"
             formulario_registro.style.display = "none"
+            nav.style.backgroundColor = "transparent"
 
         }
         function mostrarCuellos() {
@@ -242,6 +252,7 @@
             formulario_pedido.style.display = "none"
             formCalificanos.style.display = "none"
             formulario_registro.style.display = "none"
+            nav.style.backgroundColor = "transparent"
 
         }
         function mostrarBolsos() {
@@ -253,6 +264,7 @@
             cuellos.style.display = "none"
             formCalificanos.style.display = "none"
             formulario_registro.style.display = "none"
+            nav.style.backgroundColor = "transparent"
 
         }
         function mostrarFormulario() {
@@ -264,6 +276,7 @@
             cuellos.style.display = "none"
             formCalificanos.style.display = "none"
             formulario_registro.style.display = "none"
+            nav.style.backgroundColor = "transparent"
 
         }
 
@@ -279,6 +292,7 @@
             bolsos.style.display = "none"
             cuellos.style.display = "none"
             formulario_registro.style.display = "none"
+            nav.style.backgroundColor = "transparent"
 
         }
     </script>

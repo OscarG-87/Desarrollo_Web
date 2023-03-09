@@ -8,13 +8,23 @@
   justify-content: center;
   align-items: center;
   display: none;
-  background-color: #a2409f;
+  z-index: 5;
 }
-
+#contenedor-gorros::before{
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+ 
+  background-size: cover;
+}
 
 #lista-gorros {
   display: flex;
-  width: 1000px;
+  width: 2000px;
   height: 500px;
 }
 
@@ -39,9 +49,9 @@
   display: none;
 }
 
-#lista-bufandas {
+#lista-bufandas {  
   display: flex;
-  width: 1000px;
+  width: 2000px;
   height: 500px;
 }
 
@@ -68,7 +78,7 @@
 
 #lista-cuellos {
   display: flex;
-  width: 1000px;
+  width: 2000px;
   height: 500px;
 }
 
@@ -95,7 +105,7 @@
 
 #lista-bolsos {
   display: flex;
-  width: 1000px;
+  width: 2000px;
   height: 500px;
 }
 
@@ -118,10 +128,12 @@
   justify-content: center;
   align-items: center;
   display: none;
+  height: 500px;
 }
 
 header {
   display: flex;
+  width: 100%;
   flex-direction: row;
   background-color: #a2409f;
   color: #e6e6fa;
@@ -133,10 +145,21 @@ header {
 
 .titulo {
   font-weight: bold;
-  width: 300px;
+  width: 800px;
   margin-left: 60px;
   height: 50px;
-  margin-top: 55px;
+  justify-content: center;
+  display: flex;
+  
+}
+
+#contenedor-botones{
+  display: flex;
+  flex-direction: column; 
+  margin-top: 30px;
+  margin-left: 260px;
+  justify-content: left;
+  
 }
 
 .botoningreso {
@@ -146,8 +169,6 @@ header {
   border-radius: 8px;
   font-weight: bolder;
   cursor: pointer;
-  margin-left: 40%;
-  margin-top: 55px;
   width: 150px;
   font-size: 20px;
 }
@@ -159,13 +180,13 @@ header {
   border-radius: 8px;
   font-weight: bolder;
   cursor: pointer;
-  margin-top: 55px;
   width: 150px;
+  margin-top: 10px;
   font-size: 20px;
 }
 
 nav {
-  background-color: #e6e6fa;
+  background-color: transparent;
   display: flex;
   justify-content: center;
 
@@ -175,7 +196,8 @@ ul {
   cursor: pointer;
   flex-direction: row;
   display: flex;
-  margin-top: -22px;
+  margin-top: -50px;
+  margin-left: 145px;
   list-style: none;
 }
 
@@ -186,16 +208,20 @@ li {
   width: 150px;
   display: flex;
   justify-content: center;
+    
 }
 
 #contenedor-home {
   display: flex;
   flex-wrap: nowrap;
+  height: 500px;
+  background: url('./imagenes/lanas.jpg') no-repeat;
 
-}
+} 
+  
 
 aside {
-  background-color: #e6e6fa;
+  background-image: url(./imagenes/agujas-hilo-violeta-vista-superior.jpg);
   display: flex;
   flex-direction: column;
   flex: 60%;
@@ -205,19 +231,21 @@ aside {
 }
 
 section {
-  background-color: #e6e6fa;
+  background-color: transparent;
   align-content: center;
   flex: 40%;
   display: flex;
   justify-content: flex-end;
-
+  width: 120px;
+  background-image: url(./imagenes/agujas-hilo-violeta-vista-superior.jpg);
 }
+
 
 footer {
   display: flex;
   justify-content: center;
   background-color: #a2409f;
-  height: 94px;
+  height: 90px;
   border-bottom-left-radius: 25px;
   color: #e6e6fa;
   border-bottom-right-radius: 25px;
@@ -226,7 +254,9 @@ footer {
 }
 
 #foto {
-  width: 300px;
+  width: 350px;
+    border-top-right-radius: 20px;
+    margin-right: 1px;
 }
 
 .logo {
@@ -242,18 +272,21 @@ a {
 
 #formulario-registro {
   justify-content: center;
-  align-items: center;
+  align-items: center;  
   display: none;
+  background-size: cover;
+  background-image: url('./imagenes/agujas-lana-tejer-canasta.jpg');
+  background-repeat: no-repeat;
+  height: 500px;
 
 }
 
-form {
+#form-registro {
   display: flex;
-  flex-direction: column;
-
+  flex-direction: column; 
   margin-top: 49px;
-  margin-left: 50px;
-  margin-bottom: 50px;
+  margin-left:900px;
+  margin-bottom: 50px;  
   align-items: center;
 
 }
@@ -269,9 +302,24 @@ input {
 }
 
 #formulario-calificanos {
-  justify-content: center;
+  justify-content: center; 
   align-items: center;
   display: none;
+  height: 500px;
+  background-size: cover;
+  background-image: url('./imagenes/bolas-multicolores-hilo-cerca-sofa-punto.jpg');
+}
+#form-calificanos {
+  display: flex;
+  flex-direction: column; 
+  margin-top: 49px;
+  margin-right:500px;
+  margin-bottom: 50px;  
+  align-items: center;
+  color: white;
 
+}
 
+label{
+  font-size: 20px;
 }
