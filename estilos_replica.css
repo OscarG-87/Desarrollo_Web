@@ -1,0 +1,96 @@
+.registro {
+  text-decoration: none;
+  color: white;
+}
+
+body {
+  background-color: black;
+}
+
+.colombia {
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-family: "Arial", Helvetica, Arial, Lucida, sans-serif;
+  font-weight: 700;
+  font-size: 90px;
+  color: #ffffff !important;
+  letter-spacing: 6px;
+  text-align: center;
+  text-shadow: 0.08em 0.08em 0.08em rgba(0, 0, 0, 0.64);
+}
+.contenedor {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+}
+.contenedor-jugger {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  background-image: linear-gradient(180deg, rgba(240, 160, 0, 0.67) 0%, rgba(240, 160, 0, 0.68) 100%),
+    url(https://storage.googleapis.com/juggercolombiawebserverbucket/1/yen-510x382.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  width: 100%;
+  height: 525px;
+}
+
+.texto-jugger {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-family: "Arial", Helvetica, Arial, Lucida, sans-serif;
+  font-weight: 700;
+  font-size: 70px;
+  color: #ffffff !important;
+  letter-spacing: 6px;
+  text-align: center;
+  text-shadow: 0.08em 0.08em 0.08em rgba(0, 0, 0, 0.64);
+}
+.texto-jugger-co {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-family: "Arial", Helvetica, Arial, Lucida, sans-serif;
+  font-weight: 700;
+  font-size: 55px;
+  color: #ffffff !important;
+  letter-spacing: 6px;
+  text-align: center;
+  text-shadow: 0.08em 0.08em 0.08em rgba(0, 0, 0, 0.64);
+}
+.contenedor-jugger-col {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  background-image: linear-gradient(180deg, rgba(240, 160, 0, 0.67) 0%, rgba(240, 160, 0, 0.68) 100%),
+    url(https://storage.googleapis.com/juggercolombiawebserverbucket/1/grupal-fin-torneo-510x382.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  width: 100%;
+  height: 525px;
+}
+
+.info-jogger {
+  background-color: #f0a000 !important;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.contenido-jogger {
+  height: 250px;
+  overflow: auto;
+  color: white;
+  width: 500px;
+  text-align: justify;
+}
