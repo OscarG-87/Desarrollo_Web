@@ -1,18 +1,39 @@
 .registro {
   text-decoration: none;
   color: white;
+  margin-right: 20px;
+  font-family: "Arial", Helvetica, Arial, Lucida, sans-serif;
+  letter-spacing: 3px;
+  font-size: 15px;
 }
-
+.navbar-brand {
+  font-family: "Arial", Helvetica, Arial, Lucida, sans-serif;
+  letter-spacing: 3px;
+}
 body {
   background-color: black;
 }
+.col-sm-4 {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.col-sm-6 {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.col-sm-2 {
+  margin: 0 !important;
+  padding: 0 !important;
+}
 
+.col-sm-12 {
+  margin-bottom: 30px !important;
+}
 .colombia {
   position: absolute;
   top: 75%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: white;
   font-family: "Arial", Helvetica, Arial, Lucida, sans-serif;
   font-weight: 700;
   font-size: 90px;
@@ -82,6 +103,7 @@ body {
 
 .info-jogger {
   background-color: #f0a000 !important;
+  background-image: linear-gradient(150deg, #fabe32 15%, rgba(41, 196, 169, 0) 15%) !important;
   height: 400px;
   display: flex;
   align-items: center;
@@ -93,4 +115,73 @@ body {
   color: white;
   width: 500px;
   text-align: justify;
+}
+.navbar-collapse {
+  justify-content: end !important;
+}
+.content-navbar {
+  justify-content: end;
+  display: flex;
+}
+.img-logos {
+  border-radius: 30px;
+}
+.titans {
+  background-color: #ffffff;
+}
+.container-logos {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+  background-color: #233c7d !important;
+  background-image: linear-gradient(150deg, #0a3755 15%, rgba(0, 0, 0, 0) 15%) !important;
+  height: auto;
+}
+.clubes {
+  font-family: "Arial", Helvetica, Arial, Lucida, sans-serif;
+  font-weight: 800;
+  font-size: 80px;
+  color: #ffffff !important;
+  text-align: center;
+  text-shadow: 0.08em 0.08em 0.08em rgba(0, 0, 0, 0.64);
+}
+.nombre-clubes {
+  font-family: "Arial", Helvetica, Arial, Lucida, sans-serif;
+  font-weight: 700;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #ffffff;
+  text-decoration-color: #ffffff;
+  font-size: 26px;
+  color: #ffffff !important;
+  text-align: center;
+}
+.container-galeria {
+  background-color: #c83232 !important;
+  background-image: linear-gradient(150deg, #a01928 15%, rgba(0, 0, 0, 0) 15%) !important;
+  height: 600px;
+  margin-top: 120px !important;
+}
+.titulo-galeria {
+  font-family: "Arial", Helvetica, Arial, Lucida, sans-serif;
+  font-weight: 800;
+  font-size: 60px;
+  color: #ffffff !important;
+  text-align: center;
+  text-shadow: 0.08em 0.08em 0.08em rgba(0, 0, 0, 0.64);
+}
+.container-redes {
+  margin-top: 120px !important;
+  background-color: #666666;
+  height: auto;
+}
+.redes {
+  color: #ffffff;
+  text-decoration: none;
+
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 15px;
+  letter-spacing: 1px;
+  line-height: 2em;
 }
