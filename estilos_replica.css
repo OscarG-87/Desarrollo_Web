@@ -178,10 +178,18 @@ body {
 .redes {
   color: #ffffff;
   text-decoration: none;
-
   font-weight: 700;
   cursor: pointer;
   font-size: 15px;
   letter-spacing: 1px;
   line-height: 2em;
+}
+
+.tipos-clubes {
+  transition: transform 0.8s;
+  cursor: pointer;
+}
+
+.tipos-clubes:hover {
+  transform: scale(0.8);
 }
