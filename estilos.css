@@ -29,8 +29,8 @@
 
 #lista-gorros {
   display: flex;
-  width: 2000px;
-  height: 500px;
+  width: 100%;
+  height: 300px;
 }
 
 #lista-gorros img {
@@ -43,14 +43,12 @@
 
 #lista-gorros img:hover {
   cursor: crosshair;
-  width: 300px;
+  width: 20%;
   opacity: 1;
   filter: contrast(120%);
 }
 
 #contenedor-bufandas {
-  justify-content: center;
-  align-items: center;
   display: none;
 }
 .icono {
@@ -63,8 +61,8 @@
 }
 #lista-bufandas {
   display: flex;
-  width: 2000px;
-  height: 500px;
+  width: 100%;
+  height: 300px;
 }
 
 #lista-bufandas img {
@@ -77,7 +75,7 @@
 
 #lista-bufandas img:hover {
   cursor: crosshair;
-  width: 300px;
+  width: 20%;
   opacity: 1;
   filter: contrast(120%);
 }
@@ -90,8 +88,8 @@
 
 #lista-cuellos {
   display: flex;
-  width: 2000px;
-  height: 500px;
+  width: 100%;
+  height: 300px;
 }
 
 #lista-cuellos img {
@@ -104,7 +102,7 @@
 
 #lista-cuellos img:hover {
   cursor: crosshair;
-  width: 300px;
+  width: 20%;
   opacity: 1;
   filter: contrast(120%);
 }
@@ -113,12 +111,14 @@
   justify-content: center;
   align-items: center;
   display: none;
+  overflow-y: scroll;
+  height: 837px;
 }
 
 #lista-bolsos {
   display: flex;
-  width: 2000px;
-  height: 500px;
+  width: 100%;
+  height: 300px;
 }
 
 #lista-bolsos img {
@@ -131,7 +131,7 @@
 
 #lista-bolsos img:hover {
   cursor: crosshair;
-  width: 300px;
+  width: 20%px;
   opacity: 1;
   filter: contrast(120%);
 }
@@ -231,7 +231,7 @@ footer {
 }
 
 #foto {
-  height: 400px;
+  height: 413px;
   border-top-right-radius: 20px;
   margin-right: 1px;
 }
@@ -388,4 +388,9 @@ li {
 .footer.disabled {
   opacity: 0.5;
   pointer-events: none;
+}
+.articulos {
+  width: 200px;
+  height: 200px;
+  border-radius: 200px;
 }
