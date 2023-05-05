@@ -231,9 +231,10 @@ footer {
 }
 
 #foto {
-  height: 413px;
+  height: 430px;
   border-top-right-radius: 20px;
   margin-right: 1px;
+  margin-top: 29px;
 }
 
 .logo {
