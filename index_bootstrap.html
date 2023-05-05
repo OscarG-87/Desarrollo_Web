@@ -902,7 +902,7 @@
               <input
                 type="text"
                 name="Nombre"
-                id="nombre"
+                id="nombres"
                 placeholder="Nombres"
                 required
               />
@@ -923,7 +923,7 @@
                 required
               />
               <h2 id="result"></h2>
-              <label for="Telefono"> Teléfono </label>
+              <label for="telefono"> Teléfono </label>
               <input
                 type="tel"
                 name="Telefono"
@@ -939,7 +939,7 @@
                 placeholder="Fecha de nacimiento"
                 required
               />
-              <label for="constraseña"> Contraseña </label>
+              <label for="pass"> Contraseña </label>
               <input
                 type="password"
                 name="pass"
@@ -948,9 +948,7 @@
                 required
               />
 
-              <button value="Enviar" onclick="registro()" type="submit">
-                Enviar
-              </button>
+              <button type="submit" onclick="registro()">Enviar</button>
             </form>
           </div>
         </div>
@@ -1004,6 +1002,50 @@
     </footer>
 
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-firestore.js"></script>
+
+    <!--CONEXION BASE DE DATOS-->
+    <script>
+      firebase.initializeApp({
+        apiKey: "AIzaSyD361bWa9o6fcexoMyhV4LsZHMPqFfGJZ4",
+        authDomain: "base-fla-web.firebaseapp.com",
+        projectId: "base-fla-web",
+      });
+
+      // Obtener la referencia a la colección de "usuarios"
+      var db = firebase.firestore();
+      var usuariosRef = db.collection("usuarios");
+
+      //obtener el formulario de registro
+      var formulario = document.getElementById("form-registro");
+      formulario.addEventListener("submit", async (e) => {
+        e.preventDefault(); //evitar que se refresque la pantalla
+        var nombres = formulario.nombres.value;
+        var apellidos = formulario.apellidos.value;
+        var telefono = formulario.telefono.value;
+        var fechan = formulario.fechan.value;
+        var correo = formulario.correo.value;
+        var passw = formulario.pass.value;
+        await usuariosRef.add({
+          nombres,
+          apellidos,
+          telefono,
+          fechan,
+          correo,
+          passw,
+        });
+        formulario.reset();
+      });
+
+      // Cargar los datos de Firestore en la tabla
+      usuariosRef.onSnapshot((usuarios) => {
+        usuarios.forEach((usuario) => {
+          console.log(usuario.data());
+        });
+      });
+    </script>
+    <!--FIN DE LA CONEXION-->
     <script>
       var gorros = document.getElementById("contenedor-gorros");
       var home = document.getElementById("home");
@@ -1037,7 +1079,8 @@
         footer.classList.remove("disabled");
       }, 5000);
 
-      function registro() {
+      function registro(e) {
+        e.preventDefault();
         var nombre = document.getElementById("nombre").value;
         var apellido = document.getElementById("apellidos").value;
         var correo = document.getElementById("correo").value;
