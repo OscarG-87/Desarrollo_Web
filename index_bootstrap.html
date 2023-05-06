@@ -51,31 +51,41 @@
             <li
               class="list-group-item list-group-item-action"
               onclick="mostrarGorros()"
+              id="btnGorros"
             >
               <a class="nav-link" href="#">Gorros</a>
             </li>
             <li
               class="list-group-item list-group-item-action"
               onclick="mostrarBufandas()"
+              id="btnBufandas"
             >
               <a class="nav-link" href="#">Bufandas</a>
             </li>
             <li
               class="list-group-item list-group-item-action"
               onclick="mostrarCuellos()"
+              id="btnCuellos"
             >
               <a class="nav-link" href="#">Cuellos</a>
             </li>
             <li
               class="list-group-item list-group-item-action"
               onclick="mostrarBolsos()"
+              id="btnBolsos"
             >
               <a class="nav-link" href="#">Bolsos</a>
             </li>
 
             <li class="list-group">
               <div class="btn-group botones" role="group">
-                <button type="button" class="btn btn-light">Ingreso</button>
+                <button
+                  type="button"
+                  class="btn btn-light"
+                  onclick="mostrarIngreso()"
+                >
+                  Ingreso
+                </button>
                 <button
                   type="button"
                   onclick="mostrarRegistro()"
@@ -90,7 +100,7 @@
       </div>
     </nav>
 
-    <!--<main class="container">
+    <main class="container">
       <div class="contenedor-spinner" id="spinner">
         <div class="row">
           <div class="col-md-12 text-center">
@@ -98,19 +108,19 @@
             <div class="spinner-border text-info" role="status"></div>
           </div>
         </div>
-      </div>-->
+      </div>
 
       <div class="bg-light p-3 rounded" id="home">
         <div class="row mb-3 text-center">
           <div class="col-sm-8 themed-grid-col">
             <h2>Nuestra Historia</h2>
             <p>
-              Surge como una iniciativa de elaboración y comercialización de productos
-              artesanales elaborados a mano, mediante técnicas en dos agujas y croché. Las
-              materias primas provienen de fuentes naturales renovables como lo son lana, fique y 
-              amero. <br>
-              Nuestra finalidad es brindar al cliente,
-              un estilo que represente su imagen y autenticidad.
+              Surge como una iniciativa de elaboración y comercialización de
+              productos artesanales elaborados a mano, mediante técnicas en dos
+              agujas y croché. Las materias primas provienen de fuentes
+              naturales renovables como lo son lana, fique y amero. <br />
+              Nuestra finalidad es brindar al cliente, un estilo que represente
+              su imagen y autenticidad.
             </p>
             <div
               id="carouselExampleIndicators"
@@ -896,6 +906,52 @@
       <div id="formulario-pedido">
         <p>Formulario</p>
       </div>
+
+      <!--LOGIN-->
+      <div class="bg-light p-5 rounded contenedores" id="formulario-ingreso">
+        <div class="row mb-3 text-center">
+          <div class="col-sm-12 themed-grid-col login">
+            <form id="form-ingreso">
+              <img
+                class="mb-4"
+                src="../imagenes/logo fla.png"
+                alt=""
+                width="72"
+                height="72"
+                style="border-radius: 50px"
+              />
+              <h1 class="h3 mb-3 fw-normal">Digite sus datos</h1>
+
+              <div class="form-floating">
+                <input
+                  type="email"
+                  class="form-control"
+                  id="correoL"
+                  placeholder="name@example.com"
+                />
+                <label for="correoL">Correo</label>
+              </div>
+              <br />
+              <div class="form-floating">
+                <input
+                  type="password"
+                  class="form-control"
+                  id="passL"
+                  placeholder="contraseña"
+                />
+                <label for="passL">Constraseña</label>
+              </div>
+              <br />
+              <button class="w-100 btn btn-lg btn-info" type="submit">
+                Ingresar
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!--FIN LOGIN-->
+
+      <!--FORMULARIO REGISTRO-->
       <div class="bg-light p-5 rounded contenedores" id="formulario-registro">
         <div class="row mb-3 text-center">
           <div class="col-sm-12 themed-grid-col">
@@ -949,12 +1005,21 @@
                 placeholder="Constraseña"
                 required
               />
+              <label for="passc"> Confirmar contraseña </label>
+              <input
+                type="password"
+                name="passc"
+                id="passc"
+                placeholder="Confirmar contraseña"
+                required
+              />
 
-              <button type="submit" onclick="registro()">Enviar</button>
+              <button type="submit">Enviar</button>
             </form>
           </div>
         </div>
       </div>
+      <!--FIN REGISTRO-->
 
       <div id="formulario-calificanos" class="contenedores">
         <form id="form-calificanos">
@@ -1006,47 +1071,9 @@
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-firestore.js"></script>
-
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
     <!--CONEXION BASE DE DATOS-->
-    <script>
-      firebase.initializeApp({
-        apiKey: "AIzaSyD361bWa9o6fcexoMyhV4LsZHMPqFfGJZ4",
-        authDomain: "base-fla-web.firebaseapp.com",
-        projectId: "base-fla-web",
-      });
 
-      // Obtener la referencia a la colección de "usuarios"
-      var db = firebase.firestore();
-      var usuariosRef = db.collection("usuarios");
-
-      //obtener el formulario de registro
-      var formulario = document.getElementById("form-registro");
-      formulario.addEventListener("submit", async (e) => {
-        e.preventDefault(); //evitar que se refresque la pantalla
-        var nombres = formulario.nombres.value;
-        var apellidos = formulario.apellidos.value;
-        var telefono = formulario.telefono.value;
-        var fechan = formulario.fechan.value;
-        var correo = formulario.correo.value;
-        var passw = formulario.pass.value;
-        await usuariosRef.add({
-          nombres,
-          apellidos,
-          telefono,
-          fechan,
-          correo,
-          passw,
-        });
-        formulario.reset();
-      });
-
-      // Cargar los datos de Firestore en la tabla
-      usuariosRef.onSnapshot((usuarios) => {
-        usuarios.forEach((usuario) => {
-          console.log(usuario.data());
-        });
-      });
-    </script>
     <!--FIN DE LA CONEXION-->
     <script>
       var gorros = document.getElementById("contenedor-gorros");
@@ -1058,65 +1085,41 @@
       var formulario_registro = document.getElementById("formulario-registro");
       var body = document.getElementById("body");
       var registro_exitoso = document.getElementById("registro-exitoso");
-      var form_reg = document.getElementById("form-registro");
       var formCalificanos = document.getElementById("formulario-calificanos");
       var nav = document.getElementById("nav");
       var modal_confirmacion = document.getElementById("modal-confirmacion");
       var div_spinner = document.getElementById("spinner");
       var navbar = document.getElementById("navbar");
       var footer = document.getElementById("footer");
+      var formulario_ingreso = document.getElementById("formulario-ingreso");
 
-      /*navbar.disabled = true;
-      navbar.classList.add("disabled");
+      //BOTONES DESHABILITADOS
+      var btnCalificanos = document.getElementById("calificanos");
+      var btnGorros = document.getElementById("btnGorros");
+      var btnBufandas = document.getElementById("btnBufandas");
+      var btnCuellos = document.getElementById("btnCuellos");
+      var btnBolsos = document.getElementById("btnBolsos");
 
-      footer.disabled = true;
-      footer.classList.add("disabled");
-
-      setTimeout(function () {
-        div_spinner.style.display = "none";
-        home.style.display = "flex";
-        navbar.disabled = false;
-        navbar.classList.remove("disabled");
-        footer.disabled = false;
-        footer.classList.remove("disabled");
-      }, 5000);*/
-
-      function registro(e) {
-        e.preventDefault();
-        var nombre = document.getElementById("nombre").value;
-        var apellido = document.getElementById("apellidos").value;
-        var correo = document.getElementById("correo").value;
-        var telefono = document.getElementById("telefono").value;
-        var fecha = document.getElementById("fechan").value;
-        var today = new Date();
-        var fechaRegistro = today.toLocaleDateString();
-
-        if (
-          nombre.length > 0 &&
-          apellido.length > 0 &&
-          telefono.length > 0 &&
-          fecha.length > 0 &&
-          correo.includes("@")
-        ) {
-          window.alert(
-            "Registro Exitoso \n Nombres: " +
-              nombre +
-              "\n Apellidos: " +
-              apellido +
-              "\n Correo: " +
-              correo +
-              "\n Teléfono: " +
-              telefono +
-              "\n Fecha de Nacimiento: " +
-              fecha +
-              "\n Fecha de Registro: " +
-              fechaRegistro
-          );
-        }
-      }
+      btnCalificanos.classList.add("disabled-link");
+      btnGorros.classList.add("disabled-link");
+      btnBufandas.classList.add("disabled-link");
+      btnCuellos.classList.add("disabled-link");
+      btnBolsos.classList.add("disabled-link");
 
       function mostrarRegistro() {
         formulario_registro.style.display = "flex";
+        gorros.style.display = "none";
+        home.style.display = "none";
+        bufandas.style.display = "none";
+        cuellos.style.display = "none";
+        bolsos.style.display = "none";
+        formulario_pedido.style.display = "none";
+        formCalificanos.style.display = "none";
+        formulario_ingreso.style.display = "none";
+      }
+      function mostrarIngreso() {
+        formulario_ingreso.style.display = "flex";
+        formulario_registro.style.display = "none";
         gorros.style.display = "none";
         home.style.display = "none";
         bufandas.style.display = "none";
@@ -1136,6 +1139,7 @@
         formCalificanos.style.display = "none";
         formulario_registro.style.display = "none";
         nav.style.backgroundColor = "transparent";
+        formulario_ingreso.style.display = "none";
       }
       function mostrarHome() {
         home.style.display = "flex";
@@ -1147,6 +1151,7 @@
         formCalificanos.style.display = "none";
         formulario_registro.style.display = "none";
         nav.style.backgroundColor = "#e6e6fa";
+        formulario_ingreso.style.display = "none";
       }
       function mostrarBufandas() {
         bufandas.style.display = "flex";
@@ -1158,6 +1163,7 @@
         formCalificanos.style.display = "none";
         formulario_registro.style.display = "none";
         nav.style.backgroundColor = "transparent";
+        formulario_ingreso.style.display = "none";
       }
       function mostrarCuellos() {
         cuellos.style.display = "flex";
@@ -1169,6 +1175,7 @@
         formCalificanos.style.display = "none";
         formulario_registro.style.display = "none";
         nav.style.backgroundColor = "transparent";
+        formulario_ingreso.style.display = "none";
       }
       function mostrarBolsos() {
         bolsos.style.display = "flex";
@@ -1180,6 +1187,7 @@
         formCalificanos.style.display = "none";
         formulario_registro.style.display = "none";
         nav.style.backgroundColor = "transparent";
+        formulario_ingreso.style.display = "none";
       }
       function mostrarFormulario() {
         formulario_pedido.style.display = "flex";
@@ -1191,9 +1199,11 @@
         formCalificanos.style.display = "none";
         formulario_registro.style.display = "none";
         nav.style.backgroundColor = "transparent";
+        formulario_ingreso.style.display = "none";
       }
 
-      function calificanos() {
+      function calificanos(e) {
+        e.preventDefault();
         window.alert("¡Gracias!\nTu opinión es muy importante para nosotros");
       }
       function mostrarFormularioCalificanos() {
@@ -1206,7 +1216,133 @@
         cuellos.style.display = "none";
         formulario_registro.style.display = "none";
         nav.style.backgroundColor = "transparent";
+        formulario_ingreso.style.display = "none";
       }
+
+      /*FIREBASE*/
+      firebase.initializeApp({
+        apiKey: "AIzaSyD361bWa9o6fcexoMyhV4LsZHMPqFfGJZ4",
+        authDomain: "base-fla-web.firebaseapp.com",
+        projectId: "base-fla-web",
+      });
+      // Obtener la referencia a la colección de "usuarios"
+      var db = firebase.firestore();
+      var usuariosRef = db.collection("usuarios");
+
+      //obtener el formulario de registro
+      var formulario = document.getElementById("form-registro");
+
+      formulario.addEventListener("submit", async (e) => {
+        div_spinner.style.display = "flex";
+        formulario_registro.style.display = "none";
+        e.preventDefault();
+        var email = formulario.correo.value;
+        var password = formulario.pass.value;
+        var confirmPassword = formulario.passc.value;
+        var nombres = formulario.nombres.value;
+        var apellidos = formulario.apellidos.value;
+        var telefono = formulario.telefono.value;
+        var fechan = formulario.fechan.value;
+
+        // Verificar que las contraseñas coincidan
+        if (password !== confirmPassword) {
+          alert("Las contraseñas no coinciden");
+          div_spinner.style.display = "none";
+          formulario_registro.style.display = "flex";
+          return;
+        } else {
+          await usuariosRef.add({
+            nombres,
+            apellidos,
+            telefono,
+            fechan,
+            email,
+            fechaRegistro,
+          });
+          // Crear la cuenta nueva en Firebase
+          var today = new Date();
+          var fechaRegistro = today.toLocaleDateString();
+          firebase
+            .auth()
+            .createUserWithEmailAndPassword(email, password)
+            .then(() => {
+              // Usuario creado correctamente
+
+              setTimeout(function () {
+                alert(
+                  "Registro Exitoso \n Nombres: " +
+                    nombres +
+                    "\n Apellidos: " +
+                    apellidos +
+                    "\n Correo: " +
+                    email +
+                    "\n Teléfono: " +
+                    telefono +
+                    "\n Fecha de Nacimiento: " +
+                    fechan +
+                    "\n Fecha de Registro: " +
+                    fechaRegistro
+                );
+                div_spinner.style.display = "none";
+                home.style.display = "flex";
+              }, 2000);
+            })
+            .catch((error) => {
+              // Error al crear la cuenta
+              div_spinner.style.display = "none";
+              if (error?.code) {
+                console.log("error", error);
+                alert("Error al crear la cuenta");
+                form_ingreso.reset();
+                formulario_registro.style.display = "flex";
+              }
+            });
+          formulario.reset();
+        }
+      });
+
+      var form_ingreso = document.getElementById("form-ingreso");
+
+      var errorIngreso;
+      var ingresoCorrecto;
+      form_ingreso.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        div_spinner.style.display = "flex";
+        formulario_ingreso.style.display = "none";
+        const email = form_ingreso.correoL.value;
+        const password = form_ingreso.passL.value;
+
+        firebase
+          .auth()
+          .signInWithEmailAndPassword(email, password)
+          .then(() => {
+            // Usuario inició sesión correctamente
+            setTimeout(function () {
+              div_spinner.style.display = "none";
+              home.style.display = "flex";
+              btnCalificanos.classList.remove("disabled-link");
+              btnGorros.classList.remove("disabled-link");
+              btnBufandas.classList.remove("disabled-link");
+              btnCuellos.classList.remove("disabled-link");
+              btnBolsos.classList.remove("disabled-link");
+            }, 2000);
+          })
+          .catch((error) => {
+            if (error?.code) {
+              console.log("error", error);
+              alert("Usuario y/o contraseña incorrectos");
+              form_ingreso.reset();
+              div_spinner.style.display = "none";
+              formulario_ingreso.style.display = "flex";
+            }
+          });
+      });
+
+      usuariosRef.onSnapshot((usuarios) => {
+        usuarios.forEach((usuario) => {
+          console.log(usuario.data());
+        });
+      });
     </script>
   </body>
 </html>

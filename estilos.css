@@ -194,11 +194,17 @@ header {
   flex-wrap: nowrap;
   background: url("../imagenes/lanas.jpg") no-repeat;
 }
-
-#home {
-  display: none;
+.disabled-link {
+  color: gray;
+  cursor: not-allowed;
+  pointer-events: none;
 }
-
+.contenedor-spinner {
+  display: none;
+  height: 837px;
+  justify-content: center;
+  align-items: center;
+}
 aside {
   background-image: url("../imagenes/agujas-hilo-violeta-vista-superior.jpg");
   display: flex;
@@ -251,13 +257,22 @@ a {
   margin-top: -24px;
 }
 #formulario-registro {
-  justify-content: flex-end;
   align-items: center;
   display: none;
   background-size: cover;
   background-image: url("../imagenes/agujas-lana-tejer-canasta.jpg");
   background-repeat: no-repeat;
-  height: 500px;
+  height: 837px;
+}
+
+#formulario-ingreso {
+  justify-content: center;
+  align-items: center;
+  display: none;
+  background-size: cover;
+  background-image: url("../imagenes/bolas-lana.jpg");
+  background-repeat: no-repeat;
+  height: 837px;
 }
 
 #form-registro {
