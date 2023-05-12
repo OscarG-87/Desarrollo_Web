@@ -1357,8 +1357,8 @@
         e.preventDefault();
         div_spinner.style.display = "flex";
         formulario_ingreso.style.display = "none";
-        const email = form_ingreso.correoL.value;
-        const password = form_ingreso.passL.value;
+        var email = form_ingreso.correoL.value;
+        var password = form_ingreso.passL.value;
 
         firebase
           .auth()
@@ -1389,7 +1389,7 @@
           });
       });
 
-      const tbody = document.getElementById("tbody");
+      var tbody = document.getElementById("tbody");
 
       function editar(id) {
         var nombre = document.getElementById(`nombre${id}`);
@@ -1439,8 +1439,8 @@
         // Limpiar el cuerpo de la tabla
         tbody.innerHTML = "";
         usuarios.forEach((usuario) => {
-          const user = usuario.data();
-          const tr = document.createElement("tr");
+          var user = usuario.data();
+          var tr = document.createElement("tr");
           tr.innerHTML = `
                 <td>
                   <input
