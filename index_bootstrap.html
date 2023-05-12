@@ -77,6 +77,14 @@
               <a class="nav-link" href="#">Bolsos</a>
             </li>
 
+            <li
+              class="list-group-item list-group-item-action usuarios"
+              onclick="mostrarUsuarios()"
+              id="btnUsuarios"
+            >
+              <a class="nav-link" href="#">Usuarios</a>
+            </li>
+
             <li class="list-group">
               <div class="btn-group botones" role="group">
                 <button
@@ -1021,6 +1029,27 @@
       </div>
       <!--FIN REGISTRO-->
 
+      <!---TABLA DE USUARIOS-->
+      <div class="bg-light p-5 rounded contenedores" id="tabla_usuarios">
+        <div class="row mb-3 text-center">
+          <div class="col-sm-12 themed-grid-col">
+            <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th>Nombres</th>
+                  <th>Apellidos</th>
+                  <th>Fecha de nacimiento</th>
+                  <th>Correo electrónico</th>
+                  <th>Teléfono</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="tbody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <!--FIN TABLAA-->
       <div id="formulario-calificanos" class="contenedores">
         <form id="form-calificanos">
           <label for="pregunta1"> ¿Qué te parecen nuestros productos? </label>
@@ -1092,6 +1121,7 @@
       var navbar = document.getElementById("navbar");
       var footer = document.getElementById("footer");
       var formulario_ingreso = document.getElementById("formulario-ingreso");
+      var tablaUsuarios = document.getElementById("tabla_usuarios");
 
       //BOTONES DESHABILITADOS
       var btnCalificanos = document.getElementById("calificanos");
@@ -1099,7 +1129,7 @@
       var btnBufandas = document.getElementById("btnBufandas");
       var btnCuellos = document.getElementById("btnCuellos");
       var btnBolsos = document.getElementById("btnBolsos");
-
+      var btnUsuarios = document.getElementById("btnUsuarios");
       btnCalificanos.classList.add("disabled-link");
       btnGorros.classList.add("disabled-link");
       btnBufandas.classList.add("disabled-link");
@@ -1108,6 +1138,20 @@
 
       function mostrarRegistro() {
         formulario_registro.style.display = "flex";
+        gorros.style.display = "none";
+        home.style.display = "none";
+        bufandas.style.display = "none";
+        cuellos.style.display = "none";
+        bolsos.style.display = "none";
+        formulario_pedido.style.display = "none";
+        formCalificanos.style.display = "none";
+        formulario_ingreso.style.display = "none";
+        tablaUsuarios.style.display = "none";
+      }
+
+      function mostrarUsuarios() {
+        tablaUsuarios.style.display = "flex";
+        formulario_registro.style.display = "none";
         gorros.style.display = "none";
         home.style.display = "none";
         bufandas.style.display = "none";
@@ -1127,6 +1171,7 @@
         bolsos.style.display = "none";
         formulario_pedido.style.display = "none";
         formCalificanos.style.display = "none";
+        tablaUsuarios.style.display = "none";
       }
 
       function mostrarGorros() {
@@ -1140,6 +1185,7 @@
         formulario_registro.style.display = "none";
         nav.style.backgroundColor = "transparent";
         formulario_ingreso.style.display = "none";
+        tablaUsuarios.style.display = "none";
       }
       function mostrarHome() {
         home.style.display = "flex";
@@ -1152,6 +1198,7 @@
         formulario_registro.style.display = "none";
         nav.style.backgroundColor = "#e6e6fa";
         formulario_ingreso.style.display = "none";
+        tablaUsuarios.style.display = "none";
       }
       function mostrarBufandas() {
         bufandas.style.display = "flex";
@@ -1164,6 +1211,7 @@
         formulario_registro.style.display = "none";
         nav.style.backgroundColor = "transparent";
         formulario_ingreso.style.display = "none";
+        tablaUsuarios.style.display = "none";
       }
       function mostrarCuellos() {
         cuellos.style.display = "flex";
@@ -1176,6 +1224,7 @@
         formulario_registro.style.display = "none";
         nav.style.backgroundColor = "transparent";
         formulario_ingreso.style.display = "none";
+        tablaUsuarios.style.display = "none";
       }
       function mostrarBolsos() {
         bolsos.style.display = "flex";
@@ -1188,6 +1237,7 @@
         formulario_registro.style.display = "none";
         nav.style.backgroundColor = "transparent";
         formulario_ingreso.style.display = "none";
+        tablaUsuarios.style.display = "none";
       }
       function mostrarFormulario() {
         formulario_pedido.style.display = "flex";
@@ -1200,6 +1250,7 @@
         formulario_registro.style.display = "none";
         nav.style.backgroundColor = "transparent";
         formulario_ingreso.style.display = "none";
+        tablaUsuarios.style.display = "none";
       }
 
       function calificanos(e) {
@@ -1231,6 +1282,7 @@
 
       //obtener el formulario de registro
       var formulario = document.getElementById("form-registro");
+      var today = new Date();
 
       formulario.addEventListener("submit", async (e) => {
         div_spinner.style.display = "flex";
@@ -1245,29 +1297,19 @@
         var fechan = formulario.fechan.value;
 
         // Verificar que las contraseñas coincidan
+
+        var fechaRegistro = today.toLocaleString();
         if (password !== confirmPassword) {
           alert("Las contraseñas no coinciden");
           div_spinner.style.display = "none";
           formulario_registro.style.display = "flex";
           return;
         } else {
-          await usuariosRef.add({
-            nombres,
-            apellidos,
-            telefono,
-            fechan,
-            email,
-            fechaRegistro,
-          });
           // Crear la cuenta nueva en Firebase
-          var today = new Date();
-          var fechaRegistro = today.toLocaleDateString();
           firebase
             .auth()
             .createUserWithEmailAndPassword(email, password)
-            .then(() => {
-              // Usuario creado correctamente
-
+            .then((docRef) => {
               setTimeout(function () {
                 alert(
                   "Registro Exitoso \n Nombres: " +
@@ -1283,6 +1325,14 @@
                     "\n Fecha de Registro: " +
                     fechaRegistro
                 );
+                usuariosRef.add({
+                  nombres,
+                  apellidos,
+                  telefono,
+                  fechan,
+                  email,
+                  fechaRegistro,
+                });
                 div_spinner.style.display = "none";
                 home.style.display = "flex";
               }, 2000);
@@ -1292,7 +1342,7 @@
               div_spinner.style.display = "none";
               if (error?.code) {
                 console.log("error", error);
-                alert("Error al crear la cuenta");
+                alert("Error al crear la cuenta y el usuario");
                 form_ingreso.reset();
                 formulario_registro.style.display = "flex";
               }
@@ -1303,8 +1353,6 @@
 
       var form_ingreso = document.getElementById("form-ingreso");
 
-      var errorIngreso;
-      var ingresoCorrecto;
       form_ingreso.addEventListener("submit", async (e) => {
         e.preventDefault();
         div_spinner.style.display = "flex";
@@ -1315,7 +1363,10 @@
         firebase
           .auth()
           .signInWithEmailAndPassword(email, password)
-          .then(() => {
+          .then((data) => {
+            if (data.user.email === "admin@admin.com") {
+              btnUsuarios.classList.remove("usuarios");
+            }
             // Usuario inició sesión correctamente
             setTimeout(function () {
               div_spinner.style.display = "none";
@@ -1338,9 +1389,117 @@
           });
       });
 
+      const tbody = document.getElementById("tbody");
+
+      function editar(id) {
+        var nombre = document.getElementById(`nombre${id}`);
+        nombre.disabled = false;
+        var apellido = document.getElementById(`apellido${id}`);
+        apellido.disabled = false;
+        var fecha = document.getElementById(`fecha${id}`);
+        fecha.disabled = false;
+        var telefono = document.getElementById(`telefono${id}`);
+        telefono.disabled = false;
+        var guardar = document.getElementById(`guardar${id}`);
+        guardar.classList.remove("guardar");
+      }
+      function guardar(id) {
+        var nombreU = document.getElementById(`nombre${id}`).value;
+
+        var apellidoU = document.getElementById(`apellido${id}`).value;
+
+        var fechaU = document.getElementById(`fecha${id}`).value;
+
+        var telefonoU = document.getElementById(`telefono${id}`).value;
+
+        if (confirm("¿Está seguro que desea editar el usuario?")) {
+          usuariosRef
+            .doc(id)
+            .update({
+              apellidos: apellidoU,
+              fechaRegistro: fechaU,
+              fechan: fechaU,
+              nombres: nombreU,
+              telefono: telefonoU,
+            })
+            .then(() => {
+              alert("Usuario actualizado correctamente");
+            })
+            .catch((error) => {
+              alert("El usuario no se actualizo correctamente");
+            });
+        }
+      }
+      function eliminar(id) {
+        if (confirm("¿Está seguro que desea eliminar el usuario?")) {
+          usuariosRef.doc(id).delete();
+        }
+      }
       usuariosRef.onSnapshot((usuarios) => {
+        // Limpiar el cuerpo de la tabla
+        tbody.innerHTML = "";
         usuarios.forEach((usuario) => {
-          console.log(usuario.data());
+          const user = usuario.data();
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+                <td>
+                  <input
+                    type="text"
+                    required
+                    default
+                    value=${user.nombres}
+                    id="nombre${usuario.id}"
+                    disabled
+                  />
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    required
+                    default
+                    value=${user.apellidos}
+                    id="apellido${usuario.id}"
+                    disabled
+                  />
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    required
+                    default
+                    value=${user.fechan}
+                    id="fecha${usuario.id}"
+                    disabled
+                  />
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    required
+                    default
+                    value=${user.email}
+                    id="email${usuario.id}"
+                    disabled
+                  />
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    required
+                    default
+                    value=${user.telefono}
+                    id="telefono${usuario.id}"
+                    disabled
+                  />
+                </td>
+                <td>
+                  <img class="iconoEliminar" src="../iconos/usuario.png"  onclick="editar('${usuario.id}')" alt=""/>
+                  <img class="iconoEliminar guardar" src="../iconos/disco-flexible.png" id="guardar${usuario.id}" onclick="guardar('${usuario.id}')" alt=""/>
+                  <img class="iconoEliminar"  src="../iconos/basura.png" onclick="eliminar('${usuario.id}')" alt=""/>
+                </td>
+
+              `;
+          tbody.appendChild(tr);
         });
       });
     </script>

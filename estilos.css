@@ -410,3 +410,17 @@ li {
   height: 200px;
   border-radius: 200px;
 }
+.iconoEliminar {
+  height: 32px;
+  cursor: pointer;
+}
+.guardar {
+  opacity: 0.5;
+  pointer-events: none;
+}
+.usuarios {
+  display: none !important;
+}
+#tabla_usuarios {
+  display: none;
+}
