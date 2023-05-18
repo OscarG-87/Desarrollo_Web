@@ -1368,6 +1368,10 @@
             if (data.user.email === "admin@admin.com") {
               btnUsuarios.classList.remove("usuarios");
             }
+            else
+            {
+              btnUsuarios.classList.add("usuarios");
+            }
             // Usuario inició sesión correctamente
             setTimeout(function () {
               div_spinner.style.display = "none";
